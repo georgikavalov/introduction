@@ -2,8 +2,12 @@ package com.musala.edu.introduction.one;
 
 import java.util.Arrays;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.musala.edu.introduction.one.model.MaxHeap;
+import com.musala.edu.introduction.one.model.MinHeap;
 
 /**
  * The {@code TaskOne} is a static class
@@ -23,13 +27,13 @@ public class TaskOne {
 	}
 
 	/**
-	 * Finds the index of the median of an array.
+	 * Finds the index of the median of an array by using sorting it.
 	 * 
 	 * @param array
 	 *            of integer values
 	 * @return An integer value representing an index of the array. -1 if not found.
 	 */
-	public static int getIndexOfMedian(int[] array) {
+	public static int getIndexOfMedianBySort(int[] array) {
 		int median = getMedianValueBySort(Arrays.copyOf(array, array.length));
 		int medianIndex = findIndexOfValue(array, median);
 		String stringifiedArray = Arrays.toString(array);
@@ -63,8 +67,8 @@ public class TaskOne {
 	 *            The array to be searched.
 	 * @param value
 	 *            The integer value to look for in the array.
-	 * @return The index of the first occurrence of the searched value. -1 if not
-	 *         found.
+	 * @return The index of the first occurrence of the searched value or the one
+	 *         that is closest by value
 	 */
 	private static int findIndexOfValue(int[] array, int value) {
 		int resultIndex = 0;
@@ -84,5 +88,20 @@ public class TaskOne {
 			resultIndex = closest;
 		}
 		return resultIndex;
+	}
+
+	/**
+	 * Finds the index of the median of an array by using a Heap structure.
+	 * 
+	 * @param array
+	 *            of integer values
+	 * @return An integer value representing an index of the array. -1 if not found.
+	 */
+	@Test
+	public static int getIndexOfMedianByHeap(int[] array) {
+		MinHeap left = new MinHeap(Arrays.copyOfRange(array, 0, array.length / 2));
+		MaxHeap right = new MaxHeap(Arrays.copyOfRange(array, (array.length - 1) / 2, array.length));
+
+		return (left.peek() + right.peek()) / 2;
 	}
 }
