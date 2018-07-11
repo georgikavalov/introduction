@@ -30,6 +30,7 @@ public class TestTaskOne {
 	public void testMedianOnEvenSizedArray() {
 		final int[] array = new int[] { 5, 6, 1, 0, 9, 1 };
 		assertArrayEquals(new int[] { 0 }, new int[] { TaskOne.getIndexOfMedianBySort(array) });
+		assertArrayEquals(new int[] { 0 }, new int[] { TaskOne.getIndexOfMedianByHeap(array) });
 	}
 
 	/**

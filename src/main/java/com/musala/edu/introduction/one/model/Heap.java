@@ -8,8 +8,9 @@ public abstract class Heap {
 
 	public Heap(int[] array) {
 		for (int i = 0; i < array.length; i++) {
-			this.add(array[i]);
+			items.add(array[i]);
 		}
+		heapifyUp();
 	}
 
 	/**
@@ -32,6 +33,7 @@ public abstract class Heap {
 	public Integer poll() {
 		Integer item = peek();
 		items.set(0, items.get(items.size() - 1));
+		items.remove(items.size() - 1);
 		heapifyDown();
 		return item;
 	}
@@ -44,13 +46,25 @@ public abstract class Heap {
 	 */
 	public void add(Integer item) {
 		items.add(item);
-		heapifyUp();
+		heapifyUp(items.size() - 1);
+	}
+
+	/**
+	 * Heapifies the whole array of items.
+	 */
+	protected void heapifyUp() {
+		for (int i = items.size() - 1; i >= 0; i--) {
+			heapifyUp(i);
+		}
 	}
 
 	/**
 	 * Heapifies up the list of values.
+	 * 
+	 * @param index
+	 *            The reference index to heapify
 	 */
-	protected abstract void heapifyUp();
+	protected abstract void heapifyUp(int index);
 
 	/**
 	 * Heapifies down the list of values.

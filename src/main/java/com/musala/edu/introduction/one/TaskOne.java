@@ -99,9 +99,11 @@ public class TaskOne {
 	 */
 	@Test
 	public static int getIndexOfMedianByHeap(int[] array) {
-		MinHeap left = new MinHeap(Arrays.copyOfRange(array, 0, array.length / 2));
-		MaxHeap right = new MaxHeap(Arrays.copyOfRange(array, (array.length - 1) / 2, array.length));
-
-		return (left.peek() + right.peek()) / 2;
+		MaxHeap heap = new MaxHeap(array);
+		MinHeap mheap = new MinHeap(array);
+		for (int i = 0; i < array.length / 2; i++) {
+			heap.poll();
+		}
+		return findIndexOfValue(array, heap.peek());
 	}
 }

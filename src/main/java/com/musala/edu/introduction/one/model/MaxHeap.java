@@ -16,10 +16,12 @@ public class MaxHeap extends Heap {
 	/**
 	 * Heapifies up the list of values. Moves higher values from the bottom to the
 	 * top
+	 * 
+	 * @param index
+	 *            The reference index to heapify
 	 */
 	@Override
-	protected void heapifyUp() {
-		int index = items.size() - 1;
+	protected void heapifyUp(int index) {
 		while (hasParent(index) && getParentValue(index) < items.get(index)) {
 			swap(getParentIndex(index), index);
 			index = getParentIndex(index);
@@ -35,11 +37,11 @@ public class MaxHeap extends Heap {
 		int index = 0;
 		while (hasLeftChild(index)) {
 			int greaterChildIndex = getLeftChildIndex(index);
-			if (hasRightChild(index) && getRightValue(index) < getLeftValue(index)) {
+			if (hasRightChild(index) && getRightValue(index) > getLeftValue(index)) {
 				greaterChildIndex = getRightChildIndex(index);
 			}
 
-			if (items.get(index) < items.get(greaterChildIndex)) {
+			if (items.get(index) > items.get(greaterChildIndex)) {
 				break;
 			} else {
 				swap(index, greaterChildIndex);

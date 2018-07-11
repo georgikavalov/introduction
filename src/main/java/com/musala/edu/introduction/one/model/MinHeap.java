@@ -21,7 +21,7 @@ public class MinHeap extends Heap {
 		int index = 0;
 		while (hasLeftChild(index)) {
 			int smallerChildIndex = getLeftChildIndex(index);
-			if (hasRightChild(index) && getRightValue(index) > getLeftValue(index)) {
+			if (hasRightChild(index) && getRightValue(index) < getLeftValue(index)) {
 				smallerChildIndex = getRightChildIndex(index);
 			}
 
@@ -37,10 +37,12 @@ public class MinHeap extends Heap {
 	/**
 	 * Heapifies up the list of values. Moves lower values from the bottom to the
 	 * top
+	 * 
+	 * @param index
+	 *            The reference index to heapify
 	 */
 	@Override
-	protected void heapifyUp() {
-		int index = items.size() - 1;
+	protected void heapifyUp(int index) {
 		while (hasParent(index) && getParentValue(index) > items.get(index)) {
 			swap(getParentIndex(index), index);
 			index = getParentIndex(index);
