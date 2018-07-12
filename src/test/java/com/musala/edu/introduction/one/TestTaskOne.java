@@ -14,12 +14,13 @@ import org.junit.Test;
 public class TestTaskOne {
 
 	/**
-	 * Tests getting the median on an array of odd size
+	 * Tests getting the median on an array of odd size using sorting and a heap.
 	 */
 	@Test
 	public void testMedianOnOddSizedArray() {
 		final int[] array = new int[] { 5, 4, 4, 1, 2, 0, 3, 9, 8 };
-		assertArrayEquals(new int[] { 1 }, new int[] { TaskOne.getIndexOfMedian(array) });
+		assertArrayEquals(new int[] { 1 }, new int[] { TaskOne.getIndexOfMedianBySort(array) });
+		assertArrayEquals(new int[] { 1 }, new int[] { TaskOne.getIndexOfMedianByHeap(array) });
 	}
 
 	/**
@@ -28,7 +29,8 @@ public class TestTaskOne {
 	@Test
 	public void testMedianOnEvenSizedArray() {
 		final int[] array = new int[] { 5, 6, 1, 0, 9, 1 };
-		assertArrayEquals(new int[] { 0 }, new int[] { TaskOne.getIndexOfMedian(array) });
+		assertArrayEquals(new int[] { 0 }, new int[] { TaskOne.getIndexOfMedianBySort(array) });
+		assertArrayEquals(new int[] { 0 }, new int[] { TaskOne.getIndexOfMedianByHeap(array) });
 	}
 
 	/**
@@ -37,7 +39,8 @@ public class TestTaskOne {
 	@Test
 	public void testMedianOnArrayOfSameValues() {
 		final int[] array = new int[] { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-		assertArrayEquals(new int[] { 0 }, new int[] { TaskOne.getIndexOfMedian(array) });
+		assertArrayEquals(new int[] { 0 }, new int[] { TaskOne.getIndexOfMedianBySort(array) });
+		assertArrayEquals(new int[] { 0 }, new int[] { TaskOne.getIndexOfMedianByHeap(array) });
 	}
 
 	/**
@@ -45,10 +48,12 @@ public class TestTaskOne {
 	 */
 	@Test
 	public void testMedianOnRandomArray() {
-		int[] array = new int[10];
+		int[] array = new int[10000];
 		for (int i = 0; i < array.length; i++) {
-			array[i] = (int) (Math.random() * 10);
+			array[i] = (int) (Math.random() * 100);
 		}
-		assertNotEquals(-1, TaskOne.getIndexOfMedian(array));
+
+		assertNotEquals(-1, TaskOne.getIndexOfMedianBySort(array));
+		assertNotEquals(-1, TaskOne.getIndexOfMedianByHeap(array));
 	}
 }
