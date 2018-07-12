@@ -40,6 +40,7 @@ public class TestTaskOne {
 	public void testMedianOnArrayOfSameValues() {
 		final int[] array = new int[] { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
 		assertArrayEquals(new int[] { 0 }, new int[] { TaskOne.getIndexOfMedianBySort(array) });
+		assertArrayEquals(new int[] { 0 }, new int[] { TaskOne.getIndexOfMedianByHeap(array) });
 	}
 
 	/**
@@ -47,11 +48,12 @@ public class TestTaskOne {
 	 */
 	@Test
 	public void testMedianOnRandomArray() {
-		int[] array = new int[10];
+		int[] array = new int[10000];
 		for (int i = 0; i < array.length; i++) {
-			array[i] = (int) (Math.random() * 10);
+			array[i] = (int) (Math.random() * 100);
 		}
 
 		assertNotEquals(-1, TaskOne.getIndexOfMedianBySort(array));
+		assertNotEquals(-1, TaskOne.getIndexOfMedianByHeap(array));
 	}
 }

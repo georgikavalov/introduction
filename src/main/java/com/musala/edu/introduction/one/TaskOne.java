@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.musala.edu.introduction.one.model.MaxHeap;
-import com.musala.edu.introduction.one.model.MinHeap;
 
 /**
  * The {@code TaskOne} is a static class
@@ -34,10 +33,13 @@ public class TaskOne {
 	 * @return An integer value representing an index of the array. -1 if not found.
 	 */
 	public static int getIndexOfMedianBySort(int[] array) {
+		long start = System.currentTimeMillis();
 		int median = getMedianValueBySort(Arrays.copyOf(array, array.length));
+		long end = System.currentTimeMillis();
 		int medianIndex = findIndexOfValue(array, median);
 		String stringifiedArray = Arrays.toString(array);
-		LOGGER.info("The array {} has a median {} at index {}", stringifiedArray, median, medianIndex);
+		LOGGER.info("The array {} has a median {} at index {} and was found in {} ms", stringifiedArray, median,
+				medianIndex, end - start);
 		return medianIndex;
 	}
 
@@ -99,11 +101,22 @@ public class TaskOne {
 	 */
 	@Test
 	public static int getIndexOfMedianByHeap(int[] array) {
+		long start = System.currentTimeMillis();
+		int median = getMeadianValueByHeap(array);
+		long end = System.currentTimeMillis();
+		int medianIndex = findIndexOfValue(array, median);
+		String stringifiedArray = Arrays.toString(array);
+		LOGGER.info("The array {} has a median {} at index {} and was found in {} ms", stringifiedArray, median,
+				medianIndex, end - start);
+		return medianIndex;
+	}
+
+	private static int getMeadianValueByHeap(int[] array) {
 		MaxHeap heap = new MaxHeap(array);
-		MinHeap mheap = new MinHeap(array);
-		for (int i = 0; i < array.length / 2; i++) {
+		int count = (array.length % 2 == 1) ? array.length / 2 : array.length / 2 - 1;
+		for (int i = 0; i < count; i++) {
 			heap.poll();
 		}
-		return findIndexOfValue(array, heap.peek());
+		return heap.peek();
 	}
 }

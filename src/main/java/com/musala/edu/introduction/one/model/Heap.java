@@ -8,9 +8,9 @@ public abstract class Heap {
 
 	public Heap(int[] array) {
 		for (int i = 0; i < array.length; i++) {
-			items.add(array[i]);
+			this.add(array[i]);
 		}
-		heapifyUp();
+		// heapify();
 	}
 
 	/**
@@ -52,7 +52,7 @@ public abstract class Heap {
 	/**
 	 * Heapifies the whole array of items.
 	 */
-	protected void heapifyUp() {
+	protected void heapify() {
 		for (int i = items.size() - 1; i >= 0; i--) {
 			heapifyUp(i);
 		}
