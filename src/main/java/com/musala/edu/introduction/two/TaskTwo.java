@@ -5,6 +5,12 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The {@code TaskTwo} is a static class
+ * 
+ * @author georgi.kavalov
+ *
+ */
 public class TaskTwo {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(TaskTwo.class);
