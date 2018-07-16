@@ -1,5 +1,7 @@
 package com.musala.edu.introduction.four;
 
+import org.junit.Test;
+
 import com.musala.edu.introduction.four.game.observer.Hangman;
 import com.musala.edu.introduction.four.words.factory.SingleWordFactory;
 
@@ -10,5 +12,13 @@ import com.musala.edu.introduction.four.words.factory.SingleWordFactory;
  *
  */
 public class TestHangman {
-	Hangman game = new Hangman(new SingleWordFactory());
+
+	/**
+	 * Tests starting a game of hangman
+	 */
+	@Test
+	public void testHangmanGameStart() {
+		Hangman game = new Hangman(new SingleWordFactory());
+		game.play();
+	}
 }

@@ -6,8 +6,18 @@ import com.musala.edu.introduction.four.words.model.Verb;
 import com.musala.edu.introduction.four.words.model.Word;
 import com.musala.edu.introduction.four.words.model.WordClass;
 
+/**
+ * {@code SingleWordFactory} is a concrete factory class for creating single
+ * guess words
+ * 
+ * @author georgi.kavalov
+ *
+ */
 public class SingleWordFactory implements WordFactory {
 
+	/**
+	 * Interface method implementation
+	 */
 	public Word makeGuessWord(WordClass wordClass) {
 		switch (wordClass) {
 		case NOUN:
@@ -20,5 +30,4 @@ public class SingleWordFactory implements WordFactory {
 			return null;
 		}
 	}
-
 }
