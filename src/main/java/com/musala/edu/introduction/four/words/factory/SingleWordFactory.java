@@ -1,5 +1,7 @@
 package com.musala.edu.introduction.four.words.factory;
 
+import java.util.Random;
+
 import com.musala.edu.introduction.four.words.model.Adjective;
 import com.musala.edu.introduction.four.words.model.Noun;
 import com.musala.edu.introduction.four.words.model.Verb;
@@ -16,7 +18,21 @@ import com.musala.edu.introduction.four.words.model.WordClass;
 public class SingleWordFactory implements WordFactory {
 
 	/**
-	 * Interface method implementation
+	 * Creates a random single guess word.
+	 * 
+	 * @return {@link Word} to be guessed.
+	 */
+	public Word makeRandomGuessWord() {
+		WordClass wordClass = WordClass.values()[new Random().nextInt(WordClass.values().length)];
+		return makeGuessWord(wordClass);
+	}
+
+	/**
+	 * Creates a single guess word of specific word class.
+	 * 
+	 * @param wordClass
+	 *            The desired class of the word.
+	 * @return {@link Word} to be guessed.
 	 */
 	public Word makeGuessWord(WordClass wordClass) {
 		switch (wordClass) {

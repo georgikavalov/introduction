@@ -10,5 +10,19 @@ import com.musala.edu.introduction.four.words.model.WordClass;
  *
  */
 public interface WordFactory {
+	/**
+	 * Creates a random guess word
+	 * 
+	 * @return {@link Word} to be guessed.
+	 */
+	public Word makeRandomGuessWord();
+
+	/**
+	 * Creates a guess word of specific class.
+	 * 
+	 * @param wordClass
+	 *            The desired word class
+	 * @return {@link Word} to be guessed.
+	 */
 	public Word makeGuessWord(WordClass wordClass);
 }
