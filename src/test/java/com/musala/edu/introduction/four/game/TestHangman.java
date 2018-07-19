@@ -1,8 +1,8 @@
-package com.musala.edu.introduction.four;
+package com.musala.edu.introduction.four.game;
 
 import org.junit.Test;
 
-import com.musala.edu.introduction.four.game.observer.Hangman;
+import com.musala.edu.introduction.four.game.controller.HangmanConsoleReader;
 import com.musala.edu.introduction.four.words.factory.SingleWordFactory;
 
 /**
@@ -18,7 +18,8 @@ public class TestHangman {
 	 */
 	@Test
 	public void testHangmanGameStart() {
-		Hangman game = new Hangman(new SingleWordFactory());
+		Hangman game = new Hangman(new SingleWordFactory(), new HangmanConsoleReader());
+		// System.setIn());
 		game.play();
 	}
 }

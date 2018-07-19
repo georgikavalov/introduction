@@ -1,4 +1,4 @@
-package com.musala.edu.introduction.four;
+package com.musala.edu.introduction.four.words.factory;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;

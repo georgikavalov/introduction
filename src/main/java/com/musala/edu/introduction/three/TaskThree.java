@@ -57,7 +57,9 @@ public class TaskThree {
 		int middle = (right + left) / 2;
 		mergeSort(array, left, middle);
 		mergeSort(array, middle + 1, right);
-		int i, j, k;
+		int i;
+		int j;
+		int k;
 		for (i = middle + 1; i > left; i--) {
 			tempArray[i - 1] = array[i - 1];
 		}

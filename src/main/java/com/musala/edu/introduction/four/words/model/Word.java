@@ -1,5 +1,8 @@
 package com.musala.edu.introduction.four.words.model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * The {@code Word} object represents a guess word
  * 
@@ -36,6 +39,25 @@ public abstract class Word {
 	 * @return A boolean flag
 	 */
 	public boolean containsLetter(String letter) {
-		return guessWord.contains(letter);
+		return guessWord.contains(letter.toLowerCase());
+	}
+
+	/**
+	 * Gets a list of all positions where the guessed letter occurs.
+	 * 
+	 * @param letter
+	 *            Guessed letter
+	 * @return List of Integers
+	 */
+	public List<Integer> getLetterPositions(String letter) {
+		List<Integer> positions = new LinkedList<Integer>();
+		int beginIndex = guessWord.substring(0).indexOf(letter);
+		if (beginIndex != -1) {
+			do {
+				positions.add(beginIndex++);
+				beginIndex += guessWord.substring(beginIndex).indexOf(letter);
+			} while (beginIndex < positions.get(positions.size() - 1));
+		}
+		return positions;
 	}
 }
