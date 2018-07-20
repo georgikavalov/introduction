@@ -1,4 +1,4 @@
-package com.musala.edu.introduction.four.words.model;
+package com.musala.edu.introduction.four.words.factory.model;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -12,6 +12,7 @@ import java.util.List;
 public abstract class Word {
 	private String guessWord;
 	private int wordSize;
+	private int lettersRevealed;
 
 	/**
 	 * Constructor
@@ -22,6 +23,7 @@ public abstract class Word {
 	public Word(String word) {
 		this.guessWord = word;
 		this.wordSize = word.length();
+		this.lettersRevealed = 0;
 	}
 
 	/**
@@ -54,10 +56,15 @@ public abstract class Word {
 		int beginIndex = guessWord.substring(0).indexOf(letter);
 		if (beginIndex != -1) {
 			do {
+				lettersRevealed++;
 				positions.add(beginIndex++);
 				beginIndex += guessWord.substring(beginIndex).indexOf(letter);
 			} while (beginIndex < positions.get(positions.size() - 1));
 		}
 		return positions;
+	}
+
+	public boolean isGuessed() {
+		return lettersRevealed == wordSize;
 	}
 }

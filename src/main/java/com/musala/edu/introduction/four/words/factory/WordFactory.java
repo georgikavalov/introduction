@@ -1,7 +1,7 @@
 package com.musala.edu.introduction.four.words.factory;
 
-import com.musala.edu.introduction.four.words.model.Word;
-import com.musala.edu.introduction.four.words.model.WordClass;
+import com.musala.edu.introduction.four.words.factory.model.Word;
+import com.musala.edu.introduction.four.words.factory.model.WordClass;
 
 /**
  * {@code WordFactory} is an interface for creating guess words

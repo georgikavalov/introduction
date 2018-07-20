@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.musala.edu.introduction.four.game.controller.GameController;
 import com.musala.edu.introduction.four.game.controller.HangmanConsoleReader;
 import com.musala.edu.introduction.four.words.factory.WordFactory;
-import com.musala.edu.introduction.four.words.model.Word;
+import com.musala.edu.introduction.four.words.factory.model.Word;
 
 /**
  * The {@code Hangman} represents game application.

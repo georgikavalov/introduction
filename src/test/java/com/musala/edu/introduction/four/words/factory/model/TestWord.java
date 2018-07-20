@@ -1,9 +1,12 @@
-package com.musala.edu.introduction.four.words.model;
+package com.musala.edu.introduction.four.words.factory.model;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
+import com.musala.edu.introduction.four.words.factory.model.Noun;
+import com.musala.edu.introduction.four.words.factory.model.Word;
 
 /**
  * The {@code TestWord} consists of unit tests for the {@link Word} model object

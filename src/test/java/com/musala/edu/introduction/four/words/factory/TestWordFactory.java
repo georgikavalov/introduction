@@ -7,8 +7,8 @@ import org.junit.Test;
 
 import com.musala.edu.introduction.four.words.factory.SingleWordFactory;
 import com.musala.edu.introduction.four.words.factory.WordFactory;
-import com.musala.edu.introduction.four.words.model.Word;
-import com.musala.edu.introduction.four.words.model.WordClass;
+import com.musala.edu.introduction.four.words.factory.model.Word;
+import com.musala.edu.introduction.four.words.factory.model.WordClass;
 
 /**
  * The {@code TestWordFactory} contains unit tests for the creation of words to

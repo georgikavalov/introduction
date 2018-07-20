@@ -1,4 +1,4 @@
-package com.musala.edu.introduction.four.words.model;
+package com.musala.edu.introduction.four.words.factory.model;
 
 import java.util.Random;
 

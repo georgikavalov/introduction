@@ -4,7 +4,8 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.io.ByteArrayInputStream;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -20,32 +21,27 @@ public class TestConsoleReader {
 	/**
 	 * Tests custom input stream.
 	 */
-	// @Test
+	@Test
 	public void testCustomInput() {
-		final String inputLetter = "a";
-		HangmanConsoleReader reader = new HangmanConsoleReader(new ByteArrayInputStream(inputLetter.getBytes()));
-		assertTrue(reader.takeUserInput());
-		String readLetter = reader.getNextLetter();
-		assertArrayEquals(new String[] { inputLetter }, new String[] { readLetter });
+		final String[] inputLetters = { "a", "b" };
+		HangmanConsoleReader reader = new HangmanConsoleReader(inputLetters);
+		List<String> readLetters = new LinkedList<String>();
+		for (int i = 0; i < inputLetters.length; i++) {
+			assertTrue(reader.takeUserInput());
+			readLetters.add(reader.getUserInput());
+		}
+		assertArrayEquals(inputLetters, readLetters.toArray());
 	}
 
 	/**
-	 * Tests press of an Escape key
+	 * Tests taking a quit keyword
 	 */
-	// @Test
-	public void testEscapeKey() {
-		final String escapeKey = "quit";
-		HangmanConsoleReader reader = new HangmanConsoleReader(new ByteArrayInputStream(escapeKey.getBytes()));
-		assertFalse(reader.takeUserInput());
-		String readLetter = reader.getNextLetter();
-		assertArrayEquals(new String[] { "" }, new String[] { readLetter });
-	}
-
 	@Test
-	public void testManualEscape() {
-		HangmanConsoleReader reader = new HangmanConsoleReader();
-		reader.takeUserInput();
-		String readLetter = reader.getNextLetter();
+	public void testEscapeKey() {
+		final String[] testInput = { "quit" };
+		HangmanConsoleReader reader = new HangmanConsoleReader(testInput);
+		assertFalse(reader.takeUserInput());
+		String readLetter = reader.getUserInput();
 		assertArrayEquals(new String[] { "" }, new String[] { readLetter });
 	}
 }

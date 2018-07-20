@@ -2,11 +2,11 @@ package com.musala.edu.introduction.four.words.factory;
 
 import java.util.Random;
 
-import com.musala.edu.introduction.four.words.model.Adjective;
-import com.musala.edu.introduction.four.words.model.Noun;
-import com.musala.edu.introduction.four.words.model.Verb;
-import com.musala.edu.introduction.four.words.model.Word;
-import com.musala.edu.introduction.four.words.model.WordClass;
+import com.musala.edu.introduction.four.words.factory.model.Adjective;
+import com.musala.edu.introduction.four.words.factory.model.Noun;
+import com.musala.edu.introduction.four.words.factory.model.Verb;
+import com.musala.edu.introduction.four.words.factory.model.Word;
+import com.musala.edu.introduction.four.words.factory.model.WordClass;
 
 /**
  * {@code SingleWordFactory} is a concrete factory class for creating single
