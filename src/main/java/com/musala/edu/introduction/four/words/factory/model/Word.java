@@ -12,7 +12,6 @@ import java.util.List;
 public abstract class Word {
 	private String guessWord;
 	private int wordSize;
-	private int lettersRevealed;
 
 	/**
 	 * Constructor
@@ -23,7 +22,6 @@ public abstract class Word {
 	public Word(String word) {
 		this.guessWord = word;
 		this.wordSize = word.length();
-		this.lettersRevealed = 0;
 	}
 
 	/**
@@ -40,8 +38,8 @@ public abstract class Word {
 	 *            to be checked if it is contained in the guess word
 	 * @return A boolean flag
 	 */
-	public boolean containsLetter(String letter) {
-		return guessWord.contains(letter.toLowerCase());
+	public boolean containsLetter(char letter) {
+		return guessWord.contains(Character.toString(letter));
 	}
 
 	/**
@@ -51,20 +49,15 @@ public abstract class Word {
 	 *            Guessed letter
 	 * @return List of Integers
 	 */
-	public List<Integer> getLetterPositions(String letter) {
+	public List<Integer> getLetterPositions(char letter) {
 		List<Integer> positions = new LinkedList<Integer>();
 		int beginIndex = guessWord.substring(0).indexOf(letter);
 		if (beginIndex != -1) {
 			do {
-				lettersRevealed++;
 				positions.add(beginIndex++);
 				beginIndex += guessWord.substring(beginIndex).indexOf(letter);
-			} while (beginIndex < positions.get(positions.size() - 1));
+			} while (beginIndex > positions.get(positions.size() - 1));
 		}
 		return positions;
-	}
-
-	public boolean isGuessed() {
-		return lettersRevealed == wordSize;
 	}
 }

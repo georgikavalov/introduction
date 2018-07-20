@@ -22,7 +22,7 @@ public class TestConsoleReader {
 	 * Tests custom input stream.
 	 */
 	@Test
-	public void testCustomInput() {
+	public void testCustomCharInput() {
 		final String[] inputLetters = { "a", "b" };
 		HangmanConsoleReader reader = new HangmanConsoleReader(inputLetters);
 		List<String> readLetters = new LinkedList<String>();
@@ -31,6 +31,18 @@ public class TestConsoleReader {
 			readLetters.add(reader.getUserInput());
 		}
 		assertArrayEquals(inputLetters, readLetters.toArray());
+		reader.closeReader();
+	}
+
+	/**
+	 * Tests user input from more than one letter
+	 */
+	@Test
+	public void testWordInput() {
+		final String[] wordInput = { "woord" };
+		HangmanConsoleReader reader = new HangmanConsoleReader(wordInput);
+		assertTrue(reader.takeUserInput());
+		assertArrayEquals(new char[] { 'w' }, reader.getUserInput().toCharArray());
 	}
 
 	/**
@@ -43,5 +55,6 @@ public class TestConsoleReader {
 		assertFalse(reader.takeUserInput());
 		String readLetter = reader.getUserInput();
 		assertArrayEquals(new String[] { "" }, new String[] { readLetter });
+		reader.closeReader();
 	}
 }

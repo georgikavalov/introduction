@@ -1,12 +1,10 @@
 package com.musala.edu.introduction.four.words.factory.model;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-
-import com.musala.edu.introduction.four.words.factory.model.Noun;
-import com.musala.edu.introduction.four.words.factory.model.Word;
 
 /**
  * The {@code TestWord} consists of unit tests for the {@link Word} model object
@@ -16,21 +14,15 @@ import com.musala.edu.introduction.four.words.factory.model.Word;
  */
 public class TestWord {
 
-	private Word newWord = new Noun();
-
-	private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+	private static final String CONCUBINE_STRING = "concubine";
+	private Word newWord = new UserWord(CONCUBINE_STRING);
 
 	/**
 	 * Tests guessing a letter.
 	 */
 	@Test
 	public void testGuessLetter() {
-		boolean foundALetter = false;
-		int i = 0;
-		while (!foundALetter || ALPHABET.length() == i) {
-			foundALetter = newWord.containsLetter(Character.toString(ALPHABET.charAt(i++)));
-		}
-		assertTrue(foundALetter);
+		assertTrue(newWord.containsLetter('b'));
 	}
 
 	/**
@@ -38,14 +30,7 @@ public class TestWord {
 	 */
 	@Test
 	public void testGetLetterPositions() {
-		boolean foundALetter = false;
-		String letter = "";
-		int i = 0;
-		while (!foundALetter || ALPHABET.length() == i) {
-			letter = Character.toString(ALPHABET.charAt(i++));
-			foundALetter = newWord.containsLetter(letter);
-		}
-		assertTrue(newWord.getLetterPositions(letter).size() > 0);
+		assertArrayEquals(newWord.getLetterPositions('c').toArray(), new Integer[] { 0, 3 });
 	}
 
 	/**
@@ -53,8 +38,16 @@ public class TestWord {
 	 */
 	@Test
 	public void testLetterNotFound() {
-		final String nonExistentLetter = "!";
+		final char nonExistentLetter = '!';
 		assertFalse(newWord.containsLetter(nonExistentLetter));
 		assertFalse(newWord.getLetterPositions(nonExistentLetter).size() > 0);
+	}
+
+	/**
+	 * Tests the getting of the word size
+	 */
+	@Test
+	public void testWordSize() {
+		assertArrayEquals(new int[] { newWord.getWordSize() }, new int[] { CONCUBINE_STRING.length() });
 	}
 }

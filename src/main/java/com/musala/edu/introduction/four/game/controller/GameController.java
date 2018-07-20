@@ -15,7 +15,7 @@ public class GameController {
 		wordDisplay = new WordDisplay(guessWord);
 		while (reader.takeUserInput()) {
 			String usersGuess = reader.getUserInput();
-			if (!wordDisplay.showLetters(usersGuess)) {
+			if (!wordDisplay.showLetters(usersGuess.charAt(0))) {
 				// gallows.update()
 			}
 

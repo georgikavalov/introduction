@@ -34,7 +34,15 @@ public class HangmanConsoleReader {
 		userInput = scanner.nextLine();
 		boolean retVal = !userInput.equalsIgnoreCase(QUIT);
 		if (!retVal) {
-			CONSOLE.info("You have quit that game.");
+			CONSOLE.info("You have quit the game.");
+			userInput = "";
+		} else {
+			if (userInput.length() > 1) {
+				CONSOLE.info("You have entered more than one character. \'{}\' will be truncated to \'{}\'", userInput,
+						userInput.charAt(0));
+				userInput = Character.toString(userInput.charAt(0));
+			}
+			CONSOLE.info("{}", userInput);
 		}
 		return retVal;
 	}

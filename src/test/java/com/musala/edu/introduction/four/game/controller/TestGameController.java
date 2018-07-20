@@ -2,7 +2,7 @@ package com.musala.edu.introduction.four.game.controller;
 
 import org.junit.Test;
 
-import com.musala.edu.introduction.four.words.factory.model.Verb;
+import com.musala.edu.introduction.four.words.factory.model.UserWord;
 import com.musala.edu.introduction.four.words.factory.model.Word;
 
 /**
@@ -13,7 +13,7 @@ import com.musala.edu.introduction.four.words.factory.model.Word;
  */
 public class TestGameController {
 
-	private Word newWord = new Verb();
+	private Word newWord = new UserWord("concubine");
 
 	/**
 	 * Tests making a guess
