@@ -2,7 +2,6 @@ package com.musala.edu.introduction.one;
 
 import java.util.Arrays;
 
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -99,7 +98,6 @@ public class TaskOne {
 	 *            of integer values
 	 * @return An integer value representing an index of the array. -1 if not found.
 	 */
-	@Test
 	public static int getIndexOfMedianByHeap(int[] array) {
 		long start = System.currentTimeMillis();
 		int median = getMeadianValueByHeap(array);

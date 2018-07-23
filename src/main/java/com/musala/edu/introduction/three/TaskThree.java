@@ -16,11 +16,8 @@ public class TaskThree {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TaskThree.class);
 	private static int[] tempArray;
 
-	/**
-	 * Constructor
-	 */
 	private TaskThree() {
-		throw new IllegalStateException("TaskThree is a static class");
+		// This is a class of static methods.
 	}
 
 	/**
@@ -29,14 +26,18 @@ public class TaskThree {
 	 * @param array
 	 *            A list of integers
 	 */
-	public static void mergeSort(int[] array) {
-		String stringifiedArray = Arrays.toString(array);
-		LOGGER.info("Array before sort: {}", stringifiedArray);
-		tempArray = new int[array.length];
-		mergeSort(array, 0, array.length - 1);
-		tempArray = null;
-		stringifiedArray = Arrays.toString(array);
-		LOGGER.info("Array after sort: {}", stringifiedArray);
+	public static synchronized void mergeSort(int[] array) {
+		if (array != null) {
+			String stringifiedArray = Arrays.toString(array);
+			LOGGER.info("Array before sort: {}", stringifiedArray);
+			tempArray = new int[array.length];
+			mergeSort(array, 0, array.length - 1);
+			tempArray = null;
+			stringifiedArray = Arrays.toString(array);
+			LOGGER.info("Array after sort: {}", stringifiedArray);
+		} else {
+			LOGGER.info("Empty array.");
+		}
 	}
 
 	/**

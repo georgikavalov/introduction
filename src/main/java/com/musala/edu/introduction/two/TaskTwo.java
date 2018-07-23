@@ -15,11 +15,8 @@ public class TaskTwo {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(TaskTwo.class);
 
-	/**
-	 * Constructor
-	 */
 	private TaskTwo() {
-		throw new IllegalStateException("TaskTwo is a static class");
+		// This is a class full of static methods.
 	}
 
 	/**
@@ -48,7 +45,7 @@ public class TaskTwo {
 			}
 		}
 		long end = System.currentTimeMillis();
-		return makeResult(array, end - start, from, to, highSum);
+		return logResult(array, end - start, from, to, highSum);
 	}
 
 	/**
@@ -77,26 +74,10 @@ public class TaskTwo {
 			}
 		}
 		long end = System.currentTimeMillis();
-		return makeResult(array, end - start, from, to, highSum);
+		return logResult(array, end - start, from, to, highSum);
 	}
 
-	/**
-	 * Presents information to console and returns a subarray using the passed
-	 * parameters.
-	 * 
-	 * @param array
-	 *            Original array
-	 * @param timeTaken
-	 *            total time taken to calculate the result
-	 * @param from
-	 *            starting index of the subarray result
-	 * @param to
-	 *            end index of the subarray result
-	 * @param highSum
-	 *            the sum of the subarray elements
-	 * @return int[]
-	 */
-	private static int[] makeResult(int[] array, long timeTaken, int from, int to, long highSum) {
+	private static int[] logResult(int[] array, long timeTaken, int from, int to, long highSum) {
 		int[] retVal = Arrays.copyOfRange(array, from, to);
 		final String STRINGIFIED_RETVAL = Arrays.toString(retVal);
 		LOGGER.info("The subarray from index {} to {} inclusively, {}, has the largest sum of {}. Found in {}ms", from,
