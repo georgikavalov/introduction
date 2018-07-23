@@ -1,6 +1,7 @@
 package com.musala.edu.introduction.three;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.Arrays;
 
@@ -13,6 +14,26 @@ import org.junit.Test;
  *
  */
 public class TestTaskThree {
+
+	/**
+	 * Tests sorting a null array.
+	 */
+	@Test
+	public void testNullArray() {
+		int[] array = null;
+		TaskThree.mergeSort(array);
+		assertNull(array);
+	}
+
+	/**
+	 * Tests sorting an empty array.
+	 */
+	@Test
+	public void testEmptyArray() {
+		int[] array = new int[] {};
+		TaskThree.mergeSort(array);
+		assertArrayEquals(new int[] {}, array);
+	}
 
 	/**
 	 * Tests sort of an array with positive integers.

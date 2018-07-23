@@ -2,7 +2,6 @@ package com.musala.edu.introduction.one;
 
 import java.util.Arrays;
 
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,11 +17,8 @@ public class TaskOne {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(TaskOne.class);
 
-	/**
-	 * Constructor
-	 */
 	private TaskOne() {
-		throw new IllegalStateException("TaskOne is a static class");
+		// This is a static class.
 	}
 
 	/**
@@ -99,7 +95,6 @@ public class TaskOne {
 	 *            of integer values
 	 * @return An integer value representing an index of the array. -1 if not found.
 	 */
-	@Test
 	public static int getIndexOfMedianByHeap(int[] array) {
 		long start = System.currentTimeMillis();
 		int median = getMeadianValueByHeap(array);
