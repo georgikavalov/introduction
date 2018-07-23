@@ -10,7 +10,6 @@ public abstract class Heap {
 		for (int i = 0; i < array.length; i++) {
 			this.add(array[i]);
 		}
-		// heapify();
 	}
 
 	/**
