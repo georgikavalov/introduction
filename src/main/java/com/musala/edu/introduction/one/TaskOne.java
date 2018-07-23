@@ -17,8 +17,11 @@ public class TaskOne {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(TaskOne.class);
 
+	/**
+	 * Constructor
+	 */
 	private TaskOne() {
-		// This is a static class.
+		throw new IllegalStateException("TaskOne is a static class");
 	}
 
 	/**
