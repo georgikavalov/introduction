@@ -1,4 +1,4 @@
-package com.musala.edu.introduction.four.game.controller;
+package com.musala.edu.introduction.four.game.controller.model;
 
 import java.util.Arrays;
 
@@ -35,25 +35,33 @@ public class WordDisplay {
 	 * @return A boolean flag indicating if the guessed letter is present
 	 */
 	public boolean showLetters(char usersGuess) {
-		boolean retVal = guessWord.containsLetter(usersGuess);
+		boolean retVal = usersGuess == '\n' || guessWord.containsLetter(usersGuess);
 		if (retVal) {
-			for (Integer pos : guessWord.getLetterPositions(usersGuess)) {
-				playersWord[pos] = usersGuess;
+			if (usersGuess != '\n') {
+				for (Integer pos : guessWord.getLetterPositions(usersGuess)) {
+					playersWord[pos] = usersGuess;
+				}
+				displayWord();
+			} else {
+				CONSOLE.info("You have entered an empty character, please try again.");
 			}
-			displayWord();
+		} else {
+			CONSOLE.info("\'{}\' is not contained in the guess word", usersGuess);
 		}
 		return retVal;
 	}
 
 	/**
+	 * Displays guess word so far.
 	 */
 	private void displayWord() {
 		CONSOLE.info("{}", playersWord);
 	}
 
 	/**
+	 * Checks if all letter have been guessed.
 	 * 
-	 * @return
+	 * @return A boolean flag indicating guess completeness.
 	 */
 	public boolean isWordRevealed() {
 		boolean retVal = !Arrays.toString(playersWord).contains("_");

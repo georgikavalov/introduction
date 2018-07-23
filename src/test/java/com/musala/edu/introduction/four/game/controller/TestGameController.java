@@ -1,7 +1,11 @@
 package com.musala.edu.introduction.four.game.controller;
 
+import static org.junit.Assert.assertArrayEquals;
+
 import org.junit.Test;
 
+import com.musala.edu.introduction.four.game.Winner;
+import com.musala.edu.introduction.four.game.controller.model.HangmanConsoleReader;
 import com.musala.edu.introduction.four.words.factory.model.UserWord;
 import com.musala.edu.introduction.four.words.factory.model.Word;
 
@@ -20,8 +24,9 @@ public class TestGameController {
 	 */
 	@Test
 	public void testMakeAGuess() {
-		GameController gameController = new GameController(new HangmanConsoleReader(new String[] { "a", "quit" }));
+		GameController gameController = new GameController(
+				new HangmanConsoleReader(new String[] { "a", "b", "", "c", "quit" }));
 
-		gameController.playGame(newWord);
+		assertArrayEquals(new Winner[] { Winner.NONE }, new Winner[] { gameController.playGame(newWord) });
 	}
 }

@@ -1,8 +1,10 @@
 package com.musala.edu.introduction.four.game;
 
+import static org.junit.Assert.assertFalse;
+
 import org.junit.Test;
 
-import com.musala.edu.introduction.four.game.controller.HangmanConsoleReader;
+import com.musala.edu.introduction.four.game.controller.model.HangmanConsoleReader;
 import com.musala.edu.introduction.four.words.factory.SingleWordFactory;
 
 /**
@@ -14,12 +16,13 @@ import com.musala.edu.introduction.four.words.factory.SingleWordFactory;
 public class TestHangman {
 
 	/**
-	 * Tests starting a game of hangman
+	 * Tests losing a game of hangman
 	 */
 	@Test
 	public void testHangmanGameStart() {
-		Hangman game = new Hangman(new SingleWordFactory(), new HangmanConsoleReader());
-		// System.setIn());
+		Hangman game = new Hangman(new SingleWordFactory(), new HangmanConsoleReader(
+				new String[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n" }));
 		game.play();
+		assertFalse(game.hasPlayerWon());
 	}
 }

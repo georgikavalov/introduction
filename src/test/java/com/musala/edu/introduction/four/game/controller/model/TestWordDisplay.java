@@ -1,4 +1,4 @@
-package com.musala.edu.introduction.four.game.controller;
+package com.musala.edu.introduction.four.game.controller.model;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -23,6 +23,7 @@ public class TestWordDisplay {
 	@Test
 	public void testShowLetters() {
 		assertTrue(wordDisplay.showLetters('a'));
+		assertTrue(wordDisplay.showLetters('\n'));
 		assertFalse(wordDisplay.showLetters('z'));
 	}
 
